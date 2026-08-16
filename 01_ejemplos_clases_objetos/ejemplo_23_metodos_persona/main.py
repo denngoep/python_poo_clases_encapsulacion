@@ -1,0 +1,41 @@
+# Ejemplo 23: Métodos que llaman a otros métodos
+
+
+class Persona:
+
+    def __init__(self, nombre, apellido, edad):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.edad = edad
+
+
+    def nombre_completo(self):
+        return f"{self.nombre} {self.apellido}"
+
+
+    def es_mayor_de_edad(self):
+        return self.edad >= 18
+
+
+    # Este método utiliza los otros métodos
+    # definidos anteriormente.
+    def presentarse(self):
+
+        estado = (
+            "mayor"
+            if self.es_mayor_de_edad()
+            else "menor"
+        )
+
+        return (
+            f"Hola, soy {self.nombre_completo()} "
+            f"y soy {estado} de edad."
+        )
+
+
+persona = Persona("Juan", "Pérez", 25)
+
+
+print(persona.nombre_completo())
+print(persona.es_mayor_de_edad())
+print(persona.presentarse())
